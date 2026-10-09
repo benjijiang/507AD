@@ -1,0 +1,75 @@
+/* Base layout is the unpinned page, including when scripts are unavailable. */
+.robot-scroll-layout {
+  display: contents;
+}
+.robot-pin-column {
+  min-width: 0;
+}
+.robot-pin-stage {
+  width: 100%;
+}
+
+@media (min-width: 1000px) and (min-height: 740px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  #main[data-scroll-motion="desktop"] .robot-scroll-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.8fr);
+    gap: 60px;
+    align-items: start;
+  }
+  #main[data-scroll-motion="desktop"] .robot-pin-column {
+    align-self: stretch;
+  }
+  #main[data-scroll-motion="desktop"] .robot-poster .media-frame,
+  #main[data-scroll-motion="desktop"] .model-viewer {
+    height: clamp(260px, 42vh, 420px);
+  }
+  #main[data-scroll-motion="desktop"] .robot-features {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 0;
+  }
+  #main[data-scroll-motion="desktop"] .robot-features article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: clamp(240px, 32vh, 330px);
+    border-left: 1px solid #c9c9c9;
+    padding: 30px 0 30px 30px;
+    transition: border-color 0.6s var(--ease);
+  }
+  #main[data-scroll-motion="desktop"] .robot-features article.is-current {
+    border-color: #1c1c1c;
+  }
+  #main[data-scroll-motion="desktop"] .feature-top {
+    margin-bottom: 25px;
+  }
+  #main[data-scroll-motion="desktop"] .feature-top span {
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    color: #b0b0b0;
+    transition: color 0.6s var(--ease);
+  }
+  #main[data-scroll-motion="desktop"] .is-current .feature-top span {
+    color: #1a1a1a;
+  }
+  #main[data-scroll-motion="desktop"] .robot-features h3 {
+    font-size: 1.65rem;
+  }
+  #main[data-scroll-motion="desktop"] .robot-features p {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-scroll-reveal],
+  [data-scroll-stagger] > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  [data-scroll-mask] {
+    clip-path: none !important;
+    transform: none !important;
+  }
+}
